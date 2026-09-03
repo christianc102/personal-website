@@ -1,0 +1,15 @@
+title: Christian Chiu
+url: "https://christianchiu.com"
+baseurl: ""
+markdown: kramdown
+permalink: /log/:slug/
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+exclude:
+  - README.md
