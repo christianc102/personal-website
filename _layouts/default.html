@@ -20,14 +20,7 @@
 
     header {
       display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-    }
-
-    header h1 {
-      font-size: 1.2rem;
-      font-weight: normal;
-      letter-spacing: 0.06em;
+      justify-content: flex-end;
     }
 
     nav a {
@@ -58,8 +51,8 @@
     a { color: #2c2420; }
 
     .about { display: flex; gap: 2rem; align-items: flex-start; }
-    .about img { width: 180px; border-radius: 4px; }
-    .about .text { flex: 1; }
+    .about img { width: 180px; border-radius: 4px; margin: 0; }
+    .about .text { flex: 1; text-box: trim-start cap alphabetic; }
 
     .post-list { list-style: none; }
 
@@ -174,7 +167,6 @@
 </head>
 <body>
   <header>
-    <h1>{{ site.title }}</h1>
     <nav>
       <a href="/">about</a>
       <a href="/log/">log</a>
