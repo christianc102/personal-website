@@ -1,0 +1,19 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: / # scans .github/workflows
+    schedule:
+      interval: monthly
+    groups:
+      actions: # one PR for all action bumps
+        patterns: ["*"]
+
+  - package-ecosystem: bundler
+    directory: /
+    schedule:
+      interval: monthly
+    allow:
+      - dependency-type: all
+    groups:
+      gems: # one PR for all gem bumps
+        patterns: ["*"]
