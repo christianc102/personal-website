@@ -1,7 +1,5 @@
 title: Christian Chiu
 url: "https://christianchiu.com"
-baseurl: ""
-markdown: kramdown
 permalink: /log/:slug/
 
 defaults:
