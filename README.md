@@ -1,6 +1,6 @@
 # christianc102's personal website
 
-jekyll + github pages for SSR.
+jekyll + github pages for SSG.
 
 ## local dev
 
