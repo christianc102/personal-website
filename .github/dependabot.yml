@@ -2,6 +2,7 @@ version: 2
 updates:
   - package-ecosystem: github-actions
     directory: / # scans .github/workflows
+    assignees: ['christianc102']
     schedule:
       interval: monthly
     groups:
@@ -10,6 +11,7 @@ updates:
 
   - package-ecosystem: bundler
     directory: /
+    assignees: ['christianc102']
     schedule:
       interval: monthly
     allow:
