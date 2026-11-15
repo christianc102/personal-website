@@ -16,7 +16,9 @@ Let's investigate!
 
 To start, we can think about digit appearance by defining the concatenated Fibonacci sequence, formed by infinitely gluing successive terms of the traditional Fibonacci sequence together[^2], as follows:
 
-> 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ... → 01123581321345589...
+$$
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34, \ldots \;\to\; 01123581321345589\ldots
+$$
 
 Formalizing the problem, we're given an infinite digit sequence $$S$$ as defined above, the observed excerpt of words $$E$$, and an unknown mapping[^3]
 
