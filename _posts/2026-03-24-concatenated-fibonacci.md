@@ -1,6 +1,7 @@
 ---
 title: concatenated fibonacci
 published: true
+math: true
 ---
 
 I recently read Kaveh Akbar's *Martyr!*, in which the protagonist Cyrus Shams is a young poet. In a memorable vignette into his day-to-day life, Akbar describes the creative process of Cyrus preparing an "experimental piece" for a local open mic:
@@ -17,15 +18,21 @@ To start, we can think about digit appearance by defining the concatenated Fibon
 
 > 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ... → 01123581321345589...
 
-Formalizing the problem, we're given an infinite digit sequence $S$ as defined above, an unknown mapping $f: \{0,1,2,\dots,9\} \to \{\text{set of words}\}$[^3], and the observed excerpt of words $E$. With this formulation, the problem can then be recast as a substring search, where the goal is to determine whether (and where) $f^{-1}(E)$[^4] occurs in $S$ for all possible $f$. The naive exhaustive approach would conduct this substring search for all possible word-digit mappings $f$. 
+Formalizing the problem, we're given an infinite digit sequence $$S$$ as defined above, the observed excerpt of words $$E$$, and an unknown mapping[^3]
 
-In the provided excerpt, the unique words are: ['lips', 'sweat', 'teeth', 'spread', 'drip', 'deep', 'skin'], which implies there are $P(10, 7) = 10! / 3! = 604{,}800$ possible word assignments of the digits 0-9 to the set of seven unique words. 
+$$
+f: \{0,1,2,\dots,9\} \to \{\text{set of words}\}.
+$$
+
+With this formulation, the problem can then be recast as a substring search, where the goal is to determine whether (and where) $$f^{-1}(E)$$[^4] occurs in $$S$$ for all possible $$f$$. The naive exhaustive approach would conduct this substring search for all possible word-digit mappings $$f$$. 
+
+In the provided excerpt, the unique words are: ['lips', 'sweat', 'teeth', 'spread', 'drip', 'deep', 'skin'], which implies there are $$P(10, 7) = 10! / 3! = 604{,}800$$ possible word assignments of the digits 0-9 to the set of seven unique words. 
 
 While this is certainly doable computationally, it's not the cleanest approach.
 
-We can instead observe a key point: we don't actually need to know $f$ to search the substring! In the observed excerpt $E$, the pattern of which positions repeat is preserved under any injective mapping $f$, and if we encode both the observed excerpt and concatenated Fibonacci sequence via a consistent rule, we can look for occurrences irrespective of our (or I suppose, Cyrus's) choice of $f$. 
+We can instead observe a key point: we don't actually need to know $$f$$ to search the substring! In the observed excerpt $$E$$, the pattern of which positions repeat is preserved under any injective mapping $$f$$, and if we encode both the observed excerpt and concatenated Fibonacci sequence via a consistent rule, we can look for occurrences irrespective of our (or I suppose, Cyrus's) choice of $$f$$. 
 
-Therefore, our algorithm involves relabelling the excerpt and every sliding window substring of length $m=12$ by first appearance, i.e. "lips sweat teeth lips spread teeth lips drip deep deep sweat skin" becomes "ABCADCAEFFBG" and 011235813213 becomes "AABCDEACBACF".
+Therefore, our algorithm involves relabelling the excerpt and every sliding window substring of length $$m=12$$ by first appearance, i.e. "lips sweat teeth lips spread teeth lips drip deep deep sweat skin" becomes "ABCADCAEFFBG" and 011235813213 becomes "AABCDEACBACF".
 
 The Python code is then simple:
 
@@ -66,7 +73,7 @@ hits = find_excerpt(excerpt, concatenated_fibonacci(10000))
 print(hits)
 ```
 
-We find that the first match occurs at index 3,198,014! Here, the 12 digit sequence is 271251230074, which gives the mapping lips=2, sweat=7, teeth=1, spread=5, drip=3, deep=0, skin=4. This match starts inside the digit representation of $F_{5531}$. Therefore, it seems extremely unlikely that Cyrus really generated 5531 elements of the sequence before deciding to commence his poem[^5], so we can conclude that Akbar likely **did not** use this process to generate the snippet.
+We find that the first match occurs at index 3,198,014! Here, the 12 digit sequence is 271251230074, which gives the mapping lips=2, sweat=7, teeth=1, spread=5, drip=3, deep=0, skin=4. This match starts inside the digit representation of $$F_{5531}$$. Therefore, it seems extremely unlikely that Cyrus really generated 5531 elements of the sequence before deciding to commence his poem[^5], so we can conclude that Akbar likely **did not** use this process to generate the snippet.
 
 ---
 
@@ -74,10 +81,10 @@ This is all in good fun! Frankly, it would have been quite a surprising result t
 
 [^1]: Given that the concatenated Fibonacci sequence is infinite, we can't *prove* that he didn't, but we can at least try to find the earliest occurrence of the pattern (which also gives us an approximate upper bound on the likelihood Akbar actually carried out the process, haha!). 
 
-[^2]: We adopt the convention of starting the Fibonacci sequence with $F_0 = 0$. 
+[^2]: We adopt the convention of starting the Fibonacci sequence with $$F_0 = 0$$. 
 
-[^3]: We assume that the map $f$ is injective, i.e. two digits do not share a word. 
+[^3]: We assume that the map $$f$$ is injective, i.e. two digits do not share a word. 
 
 [^4]: Apologies for the ugly / overloaded notation: the idea is to map the observed excerpt of words back to their original numbers and this seemed to me to be a more concise way to express this without sacrificing too much clarity.
 
-[^5]: And even worse, he wouldn't have been able to do this in Excel, since Excel only stores 15 significant digits, thus limiting his generation to $F_{73}$.
+[^5]: And even worse, he wouldn't have been able to do this in Excel, since Excel only stores 15 significant digits, thus limiting his generation to $$F_{73}$$.

@@ -11,3 +11,6 @@ defaults:
 
 exclude:
   - README.md
+
+kramdown:
+  math_engine: katex
