@@ -118,6 +118,24 @@
       font-size: 0.85em;
     }
 
+    /* syntax highlighting (rouge) */
+    .highlight {
+      --hl-keyword: inherit;  /* TODO */
+      --hl-string: inherit;   /* TODO */
+      --hl-comment: inherit;  /* TODO */
+      --hl-function: inherit; /* TODO */
+      --hl-number: inherit;   /* TODO */
+      --hl-builtin: inherit;  /* TODO */
+      --hl-operator: inherit; /* TODO */
+    }
+    .highlight :is(.k, .kd, .kn, .kc, .ow) { color: var(--hl-keyword); }
+    .highlight :is(.s, .s1, .s2, .sh, .si, .sa) { color: var(--hl-string); }
+    .highlight :is(.c, .c1, .cm, .sd) { color: var(--hl-comment); }
+    .highlight :is(.nf, .nc) { color: var(--hl-function); }
+    .highlight :is(.mi, .mf) { color: var(--hl-number); }
+    .highlight :is(.nb, .bp) { color: var(--hl-builtin); }
+    .highlight .o { color: var(--hl-operator); }
+
     :not(pre) > code {
       background: #f0ebe5;
       padding: 0.15em 0.35em;
