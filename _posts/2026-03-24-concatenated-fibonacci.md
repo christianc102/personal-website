@@ -17,7 +17,7 @@ To start, we can think about digit appearance by defining the concatenated Fibon
 
 > 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ... → 01123581321345589...
 
-Formalizing the problem, we're given an infinite digit sequence $S$ as defined above, an unknown mapping $f: \{0,1,2,\dots,9\} \to \{\text{set of words}\}$[^3], and the observed excerpt of words $E$. With this formulation, the problem can then be recast as a substring search, where the goal is to whether (and where) $f^{-1}(E)$[^4] occurs in $S$ for all possible $f$. The naive exhaustive approach would conduct this substring search for all possible word-digit mappings $f$. 
+Formalizing the problem, we're given an infinite digit sequence $S$ as defined above, an unknown mapping $f: \{0,1,2,\dots,9\} \to \{\text{set of words}\}$[^3], and the observed excerpt of words $E$. With this formulation, the problem can then be recast as a substring search, where the goal is to determine whether (and where) $f^{-1}(E)$[^4] occurs in $S$ for all possible $f$. The naive exhaustive approach would conduct this substring search for all possible word-digit mappings $f$. 
 
 In the provided excerpt, the unique words are: ['lips', 'sweat', 'teeth', 'spread', 'drip', 'deep', 'skin'], which implies there are $P(10, 7) = 10! / 3! = 604{,}800$ possible word assignments of the digits 0-9 to the set of seven unique words. 
 
