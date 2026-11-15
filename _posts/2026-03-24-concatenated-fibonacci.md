@@ -28,13 +28,13 @@ $$
 
 With this formulation, the problem can then be recast as a substring search, where the goal is to determine whether (and where) $$f^{-1}(E)$$[^4] occurs in $$S$$ for all possible $$f$$. The naive exhaustive approach would conduct this substring search for all possible word-digit mappings $$f$$. 
 
-In the provided excerpt, the unique words are: ['lips', 'sweat', 'teeth', 'spread', 'drip', 'deep', 'skin'], which implies there are $$P(10, 7) = 10! / 3! = 604{,}800$$ possible word assignments of the digits 0-9 to the set of seven unique words. 
+In the provided excerpt, the unique words are: `['lips', 'sweat', 'teeth', 'spread', 'drip', 'deep', 'skin']`, which implies there are $$P(10, 7) = 10! / 3! = 604{,}800$$ possible word assignments of the digits 0-9 to the set of seven unique words. 
 
 While this is certainly doable computationally, it's not the cleanest approach.
 
 We can instead observe a key point: we don't actually need to know $$f$$ to search the substring! In the observed excerpt $$E$$, the pattern of which positions repeat is preserved under any injective mapping $$f$$, and if we encode both the observed excerpt and concatenated Fibonacci sequence via a consistent rule, we can look for occurrences irrespective of our (or I suppose, Cyrus's) choice of $$f$$. 
 
-Therefore, our algorithm involves relabelling the excerpt and every sliding window substring of length $$m=12$$ by first appearance, i.e. "lips sweat teeth lips spread teeth lips drip deep deep sweat skin" becomes "ABCADCAEFFBG" and 011235813213 becomes "AABCDEACBACF".
+Therefore, our algorithm involves relabelling the excerpt and every sliding window substring of length $$m=12$$ by first appearance, i.e. "lips sweat teeth lips spread teeth lips drip deep deep sweat skin" becomes `ABCADCAEFFBG` and `011235813213` becomes `AABCDEACBACF`.
 
 The Python code is then simple:
 
@@ -75,7 +75,7 @@ hits = find_excerpt(excerpt, concatenated_fibonacci(10000))
 print(hits)
 ```
 
-We find that the first match occurs at index 3,198,014! Here, the 12 digit sequence is 271251230074, which gives the mapping lips=2, sweat=7, teeth=1, spread=5, drip=3, deep=0, skin=4. This match starts inside the digit representation of $$F_{5531}$$. Therefore, it seems extremely unlikely that Cyrus really generated 5531 elements of the sequence before deciding to commence his poem[^5], so we can conclude that Akbar likely **did not** use this process to generate the snippet.
+We find that the first match occurs at index 3,198,014! Here, the 12 digit sequence is `271251230074`, which gives the mapping `lips=2, sweat=7, teeth=1, spread=5, drip=3, deep=0, skin=4`. This match starts inside the digit representation of $$F_{5531}$$. Therefore, it seems extremely unlikely that Cyrus really generated 5531 elements of the sequence before deciding to commence his poem[^5], so we can conclude that Akbar likely **did not** use this process to generate the snippet.
 
 ---
 
