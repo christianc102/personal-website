@@ -43,6 +43,18 @@
 
     main { margin-bottom: 3rem; }
 
+    main hr {
+      border: none;
+      text-align: center;
+      margin: 2.5rem 0;
+      overflow: visible;
+    }
+    main hr::after {
+      content: "* * *";
+      letter-spacing: 0.5em;
+      opacity: 0.5;
+    }
+
     h2 {
       font-size: 1rem;
       font-weight: normal;
